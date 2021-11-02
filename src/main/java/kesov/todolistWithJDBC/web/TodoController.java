@@ -1,4 +1,4 @@
-package kesov.todolistWithJDBC.controller;
+package kesov.todolistWithJDBC.web;
 
 import kesov.todolistWithJDBC.service.TodoService;
 import kesov.todolistWithJDBC.task.Todo;
@@ -18,26 +18,29 @@ public class TodoController {
     @GetMapping()
     @ResponseBody
     public List<Todo> getAll(){
-        System.out.println(service.getAll());
         return service.getAll();
     }
 
-    @GetMapping("{taskId}")
-    public Todo get(@PathVariable(value="taskId")int id){
-        return service.get(id);
-    }
 
     @PostMapping
-    public Todo save(@RequestBody Todo todo){
+    public Todo saveAndEdit(@RequestBody Todo todo) {
         return service.saveTask(todo);
     }
-    @PostMapping("{taskId}")
-    public boolean update(@PathVariable(value="taskId")int id,@RequestBody Todo todo){
-        return service.edit(id, todo);
+
+    @DeleteMapping
+    public void delete(@RequestParam(value="id") Integer id){
+        if(id==null){
+            service.deleteAll();
+        }
+        else {
+            service.delete(id);
+        }
     }
-    @DeleteMapping("{taskId}")
-    public boolean delete(@PathVariable(value="taskId")int id){
-        return service.delete(id);
+
+    @DeleteMapping("{todoId}")
+    public void delete(@PathVariable(value="todoId")int id){
+        service.delete(id);
     }
+
 
 }

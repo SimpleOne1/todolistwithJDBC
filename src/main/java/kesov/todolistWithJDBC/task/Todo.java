@@ -7,9 +7,7 @@ public class Todo {
 
     private Integer id;
 
-    @NotNull
-    private String description;
-
+    private String text;
 
     public Integer getId() {
         return id;
@@ -19,11 +17,11 @@ public class Todo {
         this.id = id;
     }
 
-    public String getDescription() {
-        return description;
+    public String getText() {
+        return text;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setText(String description) {
+        this.text = description;
     }
 }

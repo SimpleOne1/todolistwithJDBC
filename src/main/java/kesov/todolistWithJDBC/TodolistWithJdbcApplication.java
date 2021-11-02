@@ -3,7 +3,7 @@ package kesov.todolistWithJDBC;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication (scanBasePackages = {"kesov.todolistWithJDBC.configuration", "kesov.todolistWithJDBC.web"})
 public class TodolistWithJdbcApplication {
 
 	public static void main(String[] args) {

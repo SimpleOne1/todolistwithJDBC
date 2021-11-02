@@ -5,5 +5,5 @@ CREATE SEQUENCE global_seq START WITH 1;
 CREATE TABLE tasks
 (
     id          INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
-    description VARCHAR NOT NULL
+    text VARCHAR NOT NULL
 );

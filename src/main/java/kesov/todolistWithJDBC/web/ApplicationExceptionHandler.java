@@ -1,4 +1,4 @@
-package kesov.todolistWithJDBC.controller;
+package kesov.todolistWithJDBC.web;
 
 import kesov.todolistWithJDBC.service.exceptions.ResponseException;
 import kesov.todolistWithJDBC.service.exceptions.TaskNotFoundException;

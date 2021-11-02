@@ -1,6 +1,7 @@
 package kesov.todolistWithJDBC.service;
 
-import kesov.todolistWithJDBC.repository.TodoRepository;
+import kesov.todolistWithJDBC.repository.TodoRepo;
+import kesov.todolistWithJDBC.repository.postgre.TodoRepository;
 import kesov.todolistWithJDBC.service.exceptions.TaskNotFoundException;
 import kesov.todolistWithJDBC.task.Todo;
 import org.springframework.stereotype.Service;
@@ -10,9 +11,9 @@ import java.util.List;
 
 @Service
 public class TodoService {
-    private final TodoRepository repository;
+    private final TodoRepo repository;
 
-    public TodoService(TodoRepository repository) {
+    public TodoService(TodoRepo repository) {
         this.repository = repository;
     }
 
@@ -45,15 +46,8 @@ public class TodoService {
         }
     }
 
-    public boolean edit(int id, Todo todo){
-        Todo todo1 = repository.get(id);
-        if(todo1 == null){
-            return false;
-        }
-        else{
-            repository.edit(id, todo);
-            return true;
-        }
+    public void deleteAll(){
+        repository.delete();
     }
 
 }

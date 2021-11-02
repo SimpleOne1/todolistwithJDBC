@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-q", "-d", "postgres", "-U"]
+      timeout: 45s
+      interval: 10s
+      retries: 10
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - APP_DB_USER=todo_list_user
+      - APP_DB_PASS=879639
+      - APP_DB_NAME=todo_list
+    volumes:
+      - ./docker/db-init/postgre:/docker-entrypoint-initdb.d/
+    ports:
+      - 5432:5432
+  mysql:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'todo_list'
+      MYSQL_USER: 'todo_list_user'
+      MYSQL_PASSWORD: '879639'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./docker/db-init/mySql:/docker-entrypoint-initdb.d/
