@@ -1,7 +1,7 @@
 package kesov.todolistWithJDBC.service;
 
 import kesov.todolistWithJDBC.repository.TodoRepo;
-import kesov.todolistWithJDBC.repository.postgre.TodoRepository;
+import kesov.todolistWithJDBC.repository.TodoRepository;
 import kesov.todolistWithJDBC.service.exceptions.TaskNotFoundException;
 import kesov.todolistWithJDBC.task.Todo;
 import org.springframework.stereotype.Service;

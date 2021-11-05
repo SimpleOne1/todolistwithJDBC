@@ -13,7 +13,7 @@ import java.util.List;
 
 import static org.springframework.jdbc.core.BeanPropertyRowMapper.newInstance;
 
-public abstract class TodoRepo {
+public abstract class TodoRepo{
     private final JdbcTemplate jdbcTemplate;
     private final SimpleJdbcInsert simpleJdbcInsert;
     private static final BeanPropertyRowMapper<Todo> ROW_MAPPER = newInstance(Todo.class);
@@ -39,13 +39,7 @@ public abstract class TodoRepo {
         }
         return todo.getId();
     }
-    //    public Todo edit(Integer id, Todo todo){
-//        int updated = jdbcTemplate.update("UPDATE tasks SET text=? where id=?", todo.getText(), id);
-//        if (updated == 0) {
-//            throw new TaskNotFoundException(id);
-//        }
-//        return todo;
-//    }
+
     public Todo get(int id){
         List<Todo> list = jdbcTemplate.query("SELECT * FROM tasks WHERE id = ?", ROW_MAPPER, id);
         return DataAccessUtils.singleResult(list);
